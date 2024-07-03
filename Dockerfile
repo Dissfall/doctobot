@@ -15,7 +15,7 @@ RUN mkdir user/profiles/spot_master_3000 \
   && rm user/profiles/spot_master_3000/profile.zip
 
 RUN mkdir user/profiles/lorentzian-classification \
-  && curl -sS https://raw.githubusercontent.com/techfreaque/octobot-lorentzian-classification/main/releases/profile/lorentzian-classification_profile.zip > user/profiles/lorentzian-classification.profile.zip \
+  && curl -sS https://raw.githubusercontent.com/techfreaque/octobot-lorentzian-classification/main/releases/profile/lorentzian-classification_profile.zip > user/profiles/lorentzian-classification/profile.zip \
   && unzip user/profiles/lorentzian-classification/profile.zip -d user/profiles/lorentzian-classification \
   && rm user/profiles/lorentzian-classification
 
