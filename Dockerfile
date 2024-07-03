@@ -1,4 +1,4 @@
-FROM drakkarsoftware/octobot:0.9.41
+FROM drakkarsoftware/octobot:0.4.54
 
 WORKDIR /octobot
 
