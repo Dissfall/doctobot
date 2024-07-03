@@ -2,12 +2,28 @@ FROM drakkarsoftware/octobot:1.0.10
 
 WORKDIR /octobot
 
-RUN Octobot tentacles --install --all
+RUN apt-get update && apt-get install unzip -y
 
-VOLUME /octobot/backtesting
-VOLUME /octobot/logs
-VOLUME /octobot/tentacles
-VOLUME /octobot/user
+RUN OctoBot tentacles --install --all
+RUN OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octo-ui-2/main/releases/octo-ui2-latest/any_platform.zip"
+RUN OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octobot-spot-master-3000/main/releases/latest/any_platform.zip"
+RUN OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octobot-lorentzian-classification/main/releases/latest/any_platform.zip"
+
+RUN mkdir user/profiles/spot_master_3000 \
+  && curl -sS https://raw.githubusercontent.com/techfreaque/octobot-spot-master-3000/main/releases/profile/latest/spot_master_3000_profile.zip > user/profiles/spot_master_3000/profile.zip \
+  && unzip user/profiles/spot_master_3000/profile.zip -d user/profiles/spot_master_3000 \
+  && rm user/profiles/spot_master_3000/profile.zip
+
+RUN mkdir user/profiles/lorentzian-classification \
+  && curl -sS https://raw.githubusercontent.com/techfreaque/octobot-lorentzian-classification/main/releases/profile/lorentzian-classification_profile.zip > user/profiles/lorentzian-classification.profile.zip \
+  && unzip user/profiles/lorentzian-classification/profile.zip -d user/profiles/lorentzian-classification \
+  && rm user/profiles/lorentzian-classification
+
+RUN apt-get clean autoclean \
+  && apt-get autoremove --yes \
+  && rm -rf /var/lib/{apt,dpkg,cache,log}/
+
+VOLUME /octobot/backtesting /octobot/logs /octobot/tentacles /octobot/user
 
 EXPOSE 5001
 
