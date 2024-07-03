@@ -4,10 +4,10 @@ WORKDIR /octobot
 
 RUN apt-get update && apt-get install unzip -y
 
-RUN OctoBot tentacles --install --all
-RUN OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octo-ui-2/main/releases/octo-ui2-latest/any_platform.zip"
-RUN OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octobot-spot-master-3000/main/releases/latest/any_platform.zip"
-RUN OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octobot-lorentzian-classification/main/releases/latest/any_platform.zip"
+RUN ./OctoBot tentacles --install --all
+RUN ./OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octo-ui-2/main/releases/octo-ui2-latest/any_platform.zip"
+RUN ./OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octobot-spot-master-3000/main/releases/latest/any_platform.zip"
+RUN ./OctoBot tentacles --install --all --location "https://raw.githubusercontent.com/techfreaque/octobot-lorentzian-classification/main/releases/latest/any_platform.zip"
 
 RUN mkdir user/profiles/spot_master_3000 \
   && curl -sS https://raw.githubusercontent.com/techfreaque/octobot-spot-master-3000/main/releases/profile/latest/spot_master_3000_profile.zip > user/profiles/spot_master_3000/profile.zip \
