@@ -2,7 +2,7 @@ FROM drakkarsoftware/octobot:1.0.10
 
 WORKDIR /octobot
 
-RUN ./Octobot tentacles --install --all
+RUN Octobot tentacles --install --all
 
 VOLUME /octobot/backtesting
 VOLUME /octobot/logs
