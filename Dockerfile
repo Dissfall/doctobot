@@ -23,8 +23,6 @@ RUN apt-get clean autoclean \
   && apt-get autoremove --yes \
   && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-VOLUME /octobot/backtesting /octobot/logs /octobot/tentacles /octobot/user
-
 EXPOSE 5001
 
 HEALTHCHECK --interval=15s --timeout=10s --retries=5 CMD curl -sS http://127.0.0.1:5001 || exit 1
